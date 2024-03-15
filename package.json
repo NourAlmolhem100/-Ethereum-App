@@ -1,6 +1,7 @@
 {
   "name": "ethereum-app",
   "version": "0.1.0",
+  "homepage": "https://nouralmolhem100.github.io/Ethereum-App/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
@@ -21,6 +22,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -46,6 +49,7 @@
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
+    "gh-pages": "^6.1.1",
     "jest": "^27.5.1"
   }
 }
