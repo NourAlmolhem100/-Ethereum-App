@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Ethereum-App/static/css/main.2237c1e3.css",
+    "main.js": "/Ethereum-App/static/js/main.73f75cbe.js",
+    "static/js/453.dc0afbec.chunk.js": "/Ethereum-App/static/js/453.dc0afbec.chunk.js",
+    "static/media/index.cjs": "/Ethereum-App/static/media/index.1c5e66572d1ca185f0b4.cjs",
+    "index.html": "/Ethereum-App/index.html",
+    "main.2237c1e3.css.map": "/Ethereum-App/static/css/main.2237c1e3.css.map",
+    "main.73f75cbe.js.map": "/Ethereum-App/static/js/main.73f75cbe.js.map",
+    "453.dc0afbec.chunk.js.map": "/Ethereum-App/static/js/453.dc0afbec.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2237c1e3.css",
+    "static/js/main.73f75cbe.js"
+  ]
+}
