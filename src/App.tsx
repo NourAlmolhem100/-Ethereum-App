@@ -75,6 +75,7 @@ const App: React.FC = () => {
             role="status"
             size="sm"
             className="spinner"
+            data-testid="loading-spinner"
           />
         </div>
       )}
@@ -93,10 +94,11 @@ const App: React.FC = () => {
         onClick={handleLastBlockClick}
         className="mt-4"
         disabled={loading}
+        data-testid="blockNumberButton"
       >
         Get Last Block Number
       </Button>
-      <p data-testid="blockNumber">Result: {blockNumber}</p>
+      {blockNumber && <p data-testid="blockNumber">Result: {blockNumber}</p>}
       <Form.Group className="mt-4">
         <Form.Label>Address</Form.Label>
         <InputGroup>
@@ -117,7 +119,9 @@ const App: React.FC = () => {
           </InputGroup.Text>
         </InputGroup>
       </Form.Group>
-      {USDTBalance && <p>USDT Balance: {USDTBalance}</p>}
+      {USDTBalance && (
+        <p data-testid="USDTBalance">USDT Balance: {USDTBalance}</p>
+      )}
     </Container>
   );
 };

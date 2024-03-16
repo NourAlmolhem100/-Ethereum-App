@@ -4,11 +4,10 @@ import {
   screen,
   fireEvent,
   waitFor,
-  findByText,
+  getByTestId,
 } from "@testing-library/react";
 import App from "./App";
 
-jest.setTimeout(25000);
 jest.mock("con3xetherfunc", () => ({
   getLastBlockNumber: jest.fn().mockResolvedValue(10),
   getUSDTBalance: jest.fn().mockResolvedValue("100"),
@@ -18,11 +17,33 @@ describe("App Component", () => {
   it("fetches last block number successfully", async () => {
     render(<App />);
 
-    const blockNumberButton = screen.getByText("Get Last Block Number");
+    const blockNumberButton = screen.getByTestId("blockNumberButton");
     fireEvent.click(blockNumberButton);
 
-    const userItem = await screen.findByText("Result:");
+    await waitFor(() =>
+      expect(screen.findByTestId("blockNumber")).toBeInTheDocument()
+    );
+  });
 
-    expect(userItem).toBeInTheDocument();
+  it("fetches USDT balance successfully", async () => {
+    const { getByText, getByPlaceholderText } = render(<App />);
+
+    const addressInput = getByPlaceholderText("Enter address");
+    fireEvent.change(addressInput, { target: { value: "0xtestaddress" } });
+
+    const balanceButton = getByText("Get USDT Balance");
+    fireEvent.click(balanceButton);
+
+    await waitFor(() =>
+      expect(screen.findByTestId("USDTBalance")).toBeInTheDocument()
+    );
+  });
+
+  it("displays loading spinner", async () => {
+    const { getByText, getByTestId } = render(<App />);
+
+    fireEvent.click(getByText("Get Last Block Number"));
+
+    expect(getByTestId("loading-spinner")).toBeInTheDocument();
   });
 });
